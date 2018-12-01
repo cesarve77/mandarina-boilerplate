@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <meta name="Description" content="Author: A.N. Author,
+    Illustrator: P. Picture, Category: Books, Price: $17.99,
+    Length: 784 pages">
+    <title>Mandarina</title>
+
+    <style>
+        .spin {
+            animation-delay: 0s;
+            animation-direction: normal;
+            animation-duration: 10s;
+            animation-fill-mode: none;
+            animation-iteration-count: infinite;
+            animation-name: loadingCircle;
+            animation-play-state: running;
+            animation-timing-function: linear;
+            box-sizing: border-box;
+            color: rgb(24, 144, 255);
+            display: inline-block;
+            fill: rgb(24, 144, 255);
+            height: 24px;
+            line-height: 24px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+            text-align: center;
+            text-rendering: optimizelegibility;
+            text-size-adjust: 100%;
+            text-transform: none;
+            width: 24px;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        @keyframes loadingCircle {
+            100% {
+                -webkit-transform: rotate(10turn);
+                transform: rotate(10turn);
+            }
+        }
+
+        .loading-wrapper {
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="loading-wrapper">
+        <i class="spin" style="font-size: 24px;">
+            <svg viewBox="0 0 1024 1024" class="anticon-spin" data-icon="loading" width="1em" height="1em"
+                 fill="currentColor" aria-hidden="true">
+                <path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"></path>
+            </svg>
+        </i>
+    </div>
+</div>
+
+</div>
+<script type="text/javascript"
+
+        src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyDREfT4Rypm8BD2TqwK-8tAHvAQ46Nswbg"></script>
+<script async src="/runtime.js"></script>
+<script async src="/app.js"></script>
+
+</body>
+</html>

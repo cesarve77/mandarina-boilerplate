@@ -1,0 +1,26 @@
+version: '3'
+services:
+  prisma:
+    image: prismagraphql/prisma:1.21
+    restart: always
+    ports:
+    - "5577:5577"
+    environment:
+      PRISMA_CONFIG: |
+        port: 5577
+        databases:
+          mandarina:
+            connector: mysql
+            host: mandarina-mysql-db
+            port: 3306
+            user: root
+            password: my-super-secret-password
+            migrations: true
+
+  mandarina-mysql-db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: my-super-secret-password
+
+

@@ -1,0 +1,9 @@
+endpoint: 'http://192.168.99.100:5577'
+datamodel:
+  - datamodel/user.model.graphql
+  - datamodel/mandarina.auth.model.graphql
+  - datamodel/link.model.graphql
+hooks:
+  post-deploy:
+    - graphql get-schema -p prisma
+    - graphql codegen
