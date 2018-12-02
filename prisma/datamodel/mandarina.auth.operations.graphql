@@ -1,0 +1,3 @@
+extend type Query {
+                            AuthFields(action: String!, table: String!) :  [String!]
+                       }

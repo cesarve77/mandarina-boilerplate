@@ -1,0 +1,7 @@
+type AuthTable {
+                        role: String!
+                        table: String!
+                        action: String!
+                        field: String
+                        id: ID! @unique
+                  }

@@ -1,0 +1,3 @@
+extend type Mutation {
+	signUp(data: SignUpInput!): String!
+}

@@ -1,0 +1,7 @@
+# Input for SignUp
+input SignUpInput {
+	email: String 
+	firstName: String! 
+	password: String 
+	repeat: String 
+}
