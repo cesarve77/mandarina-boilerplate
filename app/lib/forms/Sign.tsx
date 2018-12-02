@@ -25,17 +25,7 @@ export const SignIn = new Table({
                 const exp = staySignIn ? Math.floor(Date.now() / 1000) + (43200) : Math.floor(Date.now() / 1000) + (1296000)
                 const data = {id: user.id, roles: user.roles, exp, staySignIn}
                 const token = jwt.sign(data, privateKey, {algorithm: "RS256"});
-                const parser = require('ua-parser-js');
-                const ua = parser(request.headers['user-agent']);
-                prisma.mutation.createToken({
-                    data: {
-                        token,
-                        type: "login",
-                        exp,
-                        browser: JSON.stringify(ua, null, '  '),
-                        user: {connect: {id: user.id}}
-                    }
-                }, '{id}').catch()//Sentry.captureException)
+
                 return token
                 /* SERVER-END */
             },
@@ -68,7 +58,6 @@ export const SignUp = new Table({
                         firstName,
                         email,
                         hash,
-                        type: "family",
                         roles: {set: ['updateMyProfile']}
                     }
                 }, '{id,email,roles}')
@@ -81,17 +70,6 @@ export const SignUp = new Table({
                     exp
                 }
                 const token = jwt.sign(data, privateKey, {algorithm: "RS256"});
-                const parser = require('ua-parser-js');
-                const ua = parser(request.headers['user-agent']);
-                prisma.mutation.createToken({
-                    data: {
-                        token,
-                        type: "login",
-                        exp,
-                        browser: JSON.stringify(ua, null, '  '),
-                        user: {connect: {id: user.id}}
-                    }
-                }, '{id}').catch()//Sentry.captureException)
                 return token
                 /* SERVER-END */
 
