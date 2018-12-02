@@ -6,4 +6,3 @@ const prisma= new Prisma({
 })
 
 export default prisma
-
