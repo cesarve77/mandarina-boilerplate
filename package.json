@@ -21,10 +21,13 @@
     "apollo-link-state": "^0.4.2",
     "apollo-server": "^2.2.5",
     "bcrypt": "^3.0.2",
+    "dotenv": "^6.2.0",
     "graphql-tag": "^2.10.0",
     "jsonwebtoken": "^8.3.0",
     "jwt-decode": "^2.2.0",
     "lodash.get": "^4.4.2",
+    "mandarina": "latest",
+    "mandarina-antd": "latest",
     "merge-graphql-schemas": "^1.5.8",
     "node-libs-browser": "^2.1.0",
     "prisma-binding": "^2.2.8",
@@ -37,9 +40,7 @@
     "react-transition-group": "^2.5.0",
     "ua-parser-js": "^0.7.19",
     "uniforms": "^1.28.0",
-    "uniforms-antd": "^1.28.0",
-    "mandarina": "latest",
-    "mandarina-antd": "latest"
+    "uniforms-antd": "^1.28.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.5",
@@ -109,7 +110,7 @@
     "stop-docker": "docker-machine stop default",
     "deploy-prisma": "cd prisma && prisma deploy --force flag",
     "playground": "prisma playground --port 8000",
-    "server": "ts-node -O '{\"module\": \"commonjs\"}' app/server/server.ts",
+    "server": "ts-node -r dotenv/config -O '{\"module\": \"commonjs\"}' app/server/server.ts",
     "docker-ip": "docker-machine ip default",
     "docker-mysql-ip": "docker inspect mandarina_mysql_1 | grep \"IPAddress\"",
     "webpack": "webpack-dev-server --hot",
