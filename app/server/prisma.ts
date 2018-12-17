@@ -1,8 +1,8 @@
 import {Prisma } from "./generated/prisma";
-
+import { PRISMA_HOST } from './config';
 
 const prisma= new Prisma({
-    endpoint: 'http://192.168.99.100:5577',
+    endpoint: PRISMA_HOST,
 })
 
 export default prisma
