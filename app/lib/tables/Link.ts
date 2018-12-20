@@ -1,16 +1,8 @@
-import {Table} from 'mandarina'
+import { Table } from 'mandarina'
+import { Link as LinkSchema } from '../schemas/Link';
 
-export const Link = new Table({
-    text: {type: String},
-    link: {type: String, validators: ['required']},
-}, {
-    name: 'Link',
-})
+const options = {
+    name: 'Link'
+};
 
-
-
-
-
-
-
-
+export const Link = new Table(LinkSchema, options);
