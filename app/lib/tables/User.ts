@@ -1,33 +1,16 @@
-import {Table} from 'mandarina'
-import {nobody} from "../types/permissions";
+import { Table } from 'mandarina'
+import { User as UserSchema } from '../schemas/User';
 
-export const User = new Table({
-    firstName: {type: String, validators: ['required']},
-    surname: {label: 'Last name', type: String},
-    email: {
-        type: String,
-        unique: true,
-        validators: ['required', 'isEmail'],
-        permissions: {read: 'everybody'},
-    },
-    hash: {type: String, permissions: nobody},
-    roles: {type: [String], permissions: nobody},
-}, {
+const options = {
     name: 'User',
     permissions: {
-        filter: ({userId, roles}) => {
+        filter: ({ userId, roles }) => {
             if (roles.includes('admin')) {
                 return
             }
-            return {id: userId}
+            return { id: userId }
         }
     }
-})
+};
 
-
-
-
-
-
-
-
+export const User = new Table(UserSchema, options);
