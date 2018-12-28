@@ -1,8 +1,8 @@
 endpoint: 'http://localhost:5577'
 datamodel:
-  - datamodel/user.model.graphql
-  - datamodel/mandarina.auth.model.graphql
+  - datamodel/users.model.graphql
   - datamodel/link.model.graphql
+  - datamodel/mandarina.auth.model.graphql
 hooks:
   post-deploy:
     - graphql get-schema -p prisma

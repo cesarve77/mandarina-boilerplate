@@ -1,5 +1,5 @@
 import path from "path";
-import {Table} from "mandarina";
+import { Mandarina} from "mandarina";
 import {Context} from "./server";
 import {publicKey} from "../lib/security/public-key";
 import jwt from 'jsonwebtoken'
@@ -20,13 +20,9 @@ export const getUser = async ({token, prisma}: Context, info?: GraphQLResolveInf
 
 }
 
-Table.configure({
+Mandarina.configure({
     prismaDir: path.join(__dirname, '../../prisma'),
-    getUser: async (context) => {
-        // @ts-ignore
+    getUser: async (context: any) => {
         return await getUser(context, '{id,roles}')
     }
 })
-
-
-

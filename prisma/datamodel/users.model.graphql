@@ -1,5 +1,5 @@
-# Type for User
-type User {
+# Type for Users
+type Users {
 	firstName: String! 
 	surname: String 
 	email: String! @unique

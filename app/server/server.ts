@@ -1,6 +1,6 @@
 import './startup'
 import {GraphQLServer} from "graphql-yoga";
-import {AuthTable, Table} from "mandarina"
+import { Mandarina, AuthTable } from "mandarina"
 import path from 'path'
 import {fileLoader, mergeTypes} from "merge-graphql-schemas";
 import "../lib/tables"
@@ -11,20 +11,12 @@ import {ContextParameters} from "graphql-yoga/dist/types";
 import {Context as ContextTable} from 'mandarina/build/Table/Table'
 import {Prisma} from "./generated/prisma";
 
-let Query = {}
-let Mutation = {}
+Mandarina.saveFiles();
 
-for (const tableName in Table.instances) {
-    console.log(tableName)
-    const table = Table.getInstance(tableName)
-    table.saveFiles().saveDeclarationFiles()
-    Query = {...Query, ...table.getDefaultResolvers('query')}
-    Mutation = {...Mutation, ...table.getDefaultResolvers('mutation')}
-}
+let Query = { ...Mandarina.getQuery(), ...AuthTable.resolvers };
+let Mutation = Mandarina.getMutation();
 
-Query = {...Query, ...AuthTable.resolvers}
-
-AuthTable.saveFiles()
+AuthTable.saveFiles();
 
 
 const inputs = fileLoader(path.join(__dirname, '../../prisma/datamodel/*.input.*'), {
