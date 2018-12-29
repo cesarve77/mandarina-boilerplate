@@ -1,18 +1,18 @@
-import {Table} from "mandarina";
+import {CustomAction, Schema, } from "mandarina";
 import {privateKey} from '../security/private-key'
 import {Context} from "../../server/server";
 //import * as Sentry from '@sentry/browser';
 
-export const SignIn = new Table({
-    email: {type: String, validators: ['required']},
-    password: {type: String, validators: ['required']},
-    staySignIn: {type: Boolean, description: 'Keep the season open up to 15 days'},
-}, {
-    name: 'SignIn',
-    virtual: true,
-    resolvers: {
+const schema = new Schema({
+    email: { type: String, validators: ['required'] },
+    password: { type: String, validators: ['required'] },
+    staySignIn: { type: Boolean, description: 'Keep the season open up to 15 days' },
+}, {name: 'SignIn'});
+
+export const SignIn = new CustomAction(schema, {
+    actions: {
         signIn: {
-            resolver: async (_: any, {data: {email, password, staySignIn}}: { data: { email: string, password: string, staySignIn: boolean } }, {prisma, request}: Context, info: any) => {
+            action: async (_: any, {data: {email, password, staySignIn}}: { data: { email: string, password: string, staySignIn: boolean } }, {prisma, request}: Context, info: any) => {
                 /* SERVER-START */
                 const user = await prisma.query.user({where: {email}}, '{id,email,roles,hash}')
                 if (!user) throw new Error('Email not found')
@@ -35,17 +35,17 @@ export const SignIn = new Table({
     }
 })
 
-export const SignUp = new Table({
-    email: {type: String},
-    firstName: {type: String, validators:['required']},
-    password: {type: String},
-    repeat: {type: String}
-}, {
-    name: 'SignUp',
-    virtual: true,
-    resolvers: {
+const siginUpSchema = new Schema({
+    email: { type: String },
+    firstName: { type: String, validators: ['required'] },
+    password: { type: String },
+    repeat: { type: String }
+}, { name: 'SignUp'});
+
+export const SignUp = new CustomAction(siginUpSchema, {
+    actions: {
         signUp: {
-            resolver: async (_: any, {data: {email, password, firstName}}: { data: { email: string, password: string,firstName: string } }, {request, prisma}: Context, info: any) => {
+            action: async (_: any, {data: {email, password, firstName}}: { data: { email: string, password: string,firstName: string } }, {request, prisma}: Context, info: any) => {
                 /* SERVER-START */
                 if (process.env.BROWSER) throw Error('resolver can not be called in browser')
                 const bcrypt = require('bcrypt')
