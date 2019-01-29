@@ -1,41 +1,37 @@
 import './startup'
 import {GraphQLServer} from "graphql-yoga";
-import {AuthTable, Table} from "mandarina"
+import {AuthServer, Mandarina} from "mandarina"
 import path from 'path'
 import {fileLoader, mergeTypes} from "merge-graphql-schemas";
-import "../lib/tables"
+import "../lib/schemas"
+import "./tables"
 import "../lib/forms"
-import './fixtures'
 import prisma from "./prisma";
 import {ContextParameters} from "graphql-yoga/dist/types";
 import {Context as ContextTable} from 'mandarina/build/Table/Table'
 import {Prisma} from "./generated/prisma";
-
-let Query = {}
-let Mutation = {}
-
-for (const tableName in Table.instances) {
-    console.log(tableName)
-    const table = Table.getInstance(tableName)
-    table.saveFiles().saveDeclarationFiles()
-    Query = {...Query, ...table.getDefaultResolvers('query')}
-    Mutation = {...Mutation, ...table.getDefaultResolvers('mutation')}
-}
-
-Query = {...Query, ...AuthTable.resolvers}
-
-AuthTable.saveFiles()
+import './fixtures'
+import {config} from "./startup";
 
 
-const inputs = fileLoader(path.join(__dirname, '../../prisma/datamodel/*.input.*'), {
+const Query = {...Mandarina.getQuery(), ...AuthServer.resolvers}
+const Mutation = Mandarina.getMutation()
+
+
+
+
+const inputs = fileLoader(path.join(process.cwd(), config.dir.prisma, 'datamodel/*.input.*'), {
     recursive: true,
     extensions: ['.graphql']
 })
-const operations = fileLoader(path.join(__dirname, '../../prisma/datamodel/*.operations.*'), {
+const operations = fileLoader(path.join(process.cwd(), config.dir.prisma, 'datamodel/*.operations.*'), {
     recursive: true,
     extensions: ['.graphql']
 })
-const generated = fileLoader(path.join(__dirname, './generated'), {recursive: true, extensions: ['.graphql']})
+const generated = fileLoader(path.join(process.cwd(), config.dir.prisma, './generated'), {
+    recursive: true,
+    extensions: ['.graphql']
+})
 
 const typeDefs = mergeTypes([...generated, ...inputs, ...operations], {all: true})
 
@@ -49,15 +45,17 @@ let resolvers = {
 // @ts-ignore
 export interface Context extends ContextTable {
     prisma: Prisma
-    token: string
-}
+    token?: string
 
+    [rest: string]: any
+}
 
 const server = new GraphQLServer({
     typeDefs,
     resolvers,
     context: (req: ContextParameters): Context => {
-        let token = (<string>req.request.headers.authorization || '').replace(/^Bearer /,'');
+        console.log('last request:', new Date())
+        let token = (<string>(req.request && req.request.headers && req.request.headers.authorization) || '').replace(/^Bearer /, '');
         return ({
             ...req,
             token,

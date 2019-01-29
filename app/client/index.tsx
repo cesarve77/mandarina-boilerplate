@@ -1,7 +1,7 @@
 import React from 'react'
 import { hot } from 'react-hot-loader'
 import ReactDOM from 'react-dom'
-import '../lib/tables'
+import '../lib/schemas'
 import 'antd/dist/antd.css';
 import './styles.css';
 

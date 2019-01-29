@@ -9,8 +9,8 @@ import {Divider, Layout, message} from "antd";
 import {withClientState} from 'apollo-link-state';
 import {ApolloProvider} from "react-apollo";
 import {setContext} from 'apollo-link-context';
-import {CreateForm, List} from "mandarina-antd";
-import {Link} from "../lib/tables/Link";
+import {CreateForm, ListVirtualized} from "mandarina-antd";
+import {LinkSchema} from "../lib/schemas/Link";
 
 
 message.config({
@@ -76,11 +76,11 @@ class App extends PureComponent {
                                 <Content
                                     style={{padding: '50px', background: '#fff', minHeight: 'calc(100vh - 133px)'}}>
                                     <h2>New Link</h2>
-                                    <CreateForm table={Link} onSubmitSuccess={()=>message.success('Link Added')}/>
+                                    <CreateForm schema={LinkSchema} onSubmitSuccess={()=>message.success('Link Added')}/>
                                     <br/>
                                     <Divider/>
                                     <h2>Links List</h2>
-                                    <List table={Link} fields={['link', 'text']}/>
+                                    <ListVirtualized schema={LinkSchema} fields={['link', 'text']}/>
                                 </Content>
                                 <Footer>
                                     © {new Date().getFullYear()}

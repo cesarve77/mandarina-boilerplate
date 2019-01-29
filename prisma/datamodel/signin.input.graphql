@@ -1,6 +1,0 @@
-# Input for SignIn
-input SignInInput {
-	email: String! 
-	password: String! 
-	staySignIn: Boolean 
-}

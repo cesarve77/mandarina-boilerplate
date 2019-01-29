@@ -1,0 +1,16 @@
+{
+  "dir": {
+    "schemas": [
+      "app/lib/forms",
+      "app/lib/schemas"
+    ],
+    "tables": [
+      "app/server/tables"
+    ],
+    "prisma": "prisma"
+  },
+  "options": {
+    "auth": true
+  },
+  "secret": "7Phk8i3M29wTutl7TFRrlPM7NrGFJaxEPEOMLFoDEIlWZwUGZBYafA5QSzlrzGTd9xPK03buzmhoGZUvqGut7n9NNi2cPLfM6UmWLlg8wlm2a5mpBEIwRG9uO1xrAA3w"
+}

@@ -1,3 +1,0 @@
-extend type Mutation {
-	signIn(data: SignInInput!): String!
-}

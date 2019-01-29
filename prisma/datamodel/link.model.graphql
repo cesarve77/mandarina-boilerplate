@@ -1,6 +1,0 @@
-# Type for Link
-type Link {
-	text: String 
-	link: String! 
-	id: ID! @unique
-}
