@@ -1,5 +1,6 @@
-endpoint: 'http://192.168.99.100:5577'
-datamodel: []
+endpoint: 'http://192.168.99.100:4466'
+datamodel:
+  - datamodel/link.model.graphql
 hooks:
   post-deploy:
     - graphql get-schema -p prisma

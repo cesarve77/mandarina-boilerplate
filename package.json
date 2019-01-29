@@ -9,7 +9,6 @@
     "**/@types/react": "16.7.22"
   },
   "dependencies": {
-    "antd": "^3.13.0",
     "apollo-cache": "^1.1.25",
     "apollo-cache-inmemory": "^1.4.2",
     "apollo-client": "^2.4.12",
@@ -25,8 +24,9 @@
     "jsonwebtoken": "^8.4.0",
     "jwt-decode": "^2.2.0",
     "lodash.get": "^4.4.2",
-    "mandarina-antd": "latest",
-    "mandarina-cli": "^0.2.7",
+    "mandarina": "^0.2.10",
+    "mandarina-antd": "^0.2.10",
+    "mandarina-cli": "^0.2.10",
     "merge-graphql-schemas": "^1.5.8",
     "node-libs-browser": "^2.2.0",
     "prisma-binding": "^2.3.0",

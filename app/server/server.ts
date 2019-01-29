@@ -17,9 +17,6 @@ import {config} from "./startup";
 const Query = {...Mandarina.getQuery(), ...AuthServer.resolvers}
 const Mutation = Mandarina.getMutation()
 
-
-
-
 const inputs = fileLoader(path.join(process.cwd(), config.dir.prisma, 'datamodel/*.input.*'), {
     recursive: true,
     extensions: ['.graphql']
@@ -28,13 +25,13 @@ const operations = fileLoader(path.join(process.cwd(), config.dir.prisma, 'datam
     recursive: true,
     extensions: ['.graphql']
 })
-const generated = fileLoader(path.join(process.cwd(), config.dir.prisma, './generated'), {
+
+const generated = fileLoader(path.join(process.cwd(), config.dir.generated), {
     recursive: true,
     extensions: ['.graphql']
 })
 
 const typeDefs = mergeTypes([...generated, ...inputs, ...operations], {all: true})
-
 
 let resolvers = {
     Query,
