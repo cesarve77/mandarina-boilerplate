@@ -114,6 +114,7 @@
     "docker-ip": "docker-machine ip default",
     "docker-mysql-ip": "docker inspect mandarina_mysql_1 | grep \"IPAddress\"",
     "webpack": "webpack-dev-server --hot",
-    "codegen": "cd prisma && graphql codegen"
+    "codegen": "cd prisma && graphql codegen",
+    "mandarina": "manda-cli"
   }
 }
