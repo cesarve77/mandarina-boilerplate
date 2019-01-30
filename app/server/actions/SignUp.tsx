@@ -1,4 +1,4 @@
-import {CustomAction} from "mandarina";
+import {CustomAction} from "mandarina-server";
 import {SignUpSchema} from "../../lib/forms/SignUp";
 import jwt from "jsonwebtoken";
 import prisma from  '../../server/prisma';

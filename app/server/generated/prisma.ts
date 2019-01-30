@@ -4,49 +4,49 @@ import { Options } from 'graphql-binding'
 import { makePrismaBindingClass, BasePrismaOptions } from 'prisma-binding'
 
 export interface Query {
-    users: <T = User[]>(args: { where?: UserWhereInput, orderBy?: UserOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    authTables: <T = AuthTable[]>(args: { where?: AuthTableWhereInput, orderBy?: AuthTableOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    links: <T = Link[]>(args: { where?: LinkWhereInput, orderBy?: LinkOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    user: <T = User>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    authTable: <T = AuthTable>(args: { where: AuthTableWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    link: <T = Link>(args: { where: LinkWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    usersConnection: <T = UserConnection>(args: { where?: UserWhereInput, orderBy?: UserOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    authTablesConnection: <T = AuthTableConnection>(args: { where?: AuthTableWhereInput, orderBy?: AuthTableOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    linksConnection: <T = LinkConnection>(args: { where?: LinkWhereInput, orderBy?: LinkOrderByInput, skip?: Int, after?: String, before?: String, first?: Int, last?: Int }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    node: <T = Node>(args: { id: ID_Output }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> 
+    links: <T = Array<Link | null>>(args: { where?: LinkWhereInput | null, orderBy?: LinkOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    users: <T = Array<User | null>>(args: { where?: UserWhereInput | null, orderBy?: UserOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    authTables: <T = Array<AuthTable | null>>(args: { where?: AuthTableWhereInput | null, orderBy?: AuthTableOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    link: <T = Link | null>(args: { where: LinkWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    user: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    authTable: <T = AuthTable | null>(args: { where: AuthTableWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    linksConnection: <T = LinkConnection>(args: { where?: LinkWhereInput | null, orderBy?: LinkOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    usersConnection: <T = UserConnection>(args: { where?: UserWhereInput | null, orderBy?: UserOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    authTablesConnection: <T = AuthTableConnection>(args: { where?: AuthTableWhereInput | null, orderBy?: AuthTableOrderByInput | null, skip?: Int | null, after?: String | null, before?: String | null, first?: Int | null, last?: Int | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    node: <T = Node | null>(args: { id: ID_Output }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> 
   }
 
 export interface Mutation {
+    createLink: <T = Link>(args: { data: LinkCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createUser: <T = User>(args: { data: UserCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     createAuthTable: <T = AuthTable>(args: { data: AuthTableCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    createLink: <T = Link>(args: { data: LinkCreateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateUser: <T = User>(args: { data: UserUpdateInput, where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateAuthTable: <T = AuthTable>(args: { data: AuthTableUpdateInput, where: AuthTableWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    updateLink: <T = Link>(args: { data: LinkUpdateInput, where: LinkWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteUser: <T = User>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteAuthTable: <T = AuthTable>(args: { where: AuthTableWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
-    deleteLink: <T = Link>(args: { where: LinkWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateLink: <T = Link | null>(args: { data: LinkUpdateInput, where: LinkWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateUser: <T = User | null>(args: { data: UserUpdateInput, where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    updateAuthTable: <T = AuthTable | null>(args: { data: AuthTableUpdateInput, where: AuthTableWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteLink: <T = Link | null>(args: { where: LinkWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteUser: <T = User | null>(args: { where: UserWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    deleteAuthTable: <T = AuthTable | null>(args: { where: AuthTableWhereUniqueInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T | null> ,
+    upsertLink: <T = Link>(args: { where: LinkWhereUniqueInput, create: LinkCreateInput, update: LinkUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertUser: <T = User>(args: { where: UserWhereUniqueInput, create: UserCreateInput, update: UserUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
     upsertAuthTable: <T = AuthTable>(args: { where: AuthTableWhereUniqueInput, create: AuthTableCreateInput, update: AuthTableUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    upsertLink: <T = Link>(args: { where: LinkWhereUniqueInput, create: LinkCreateInput, update: LinkUpdateInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyUsers: <T = BatchPayload>(args: { data: UserUpdateManyMutationInput, where?: UserWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyAuthTables: <T = BatchPayload>(args: { data: AuthTableUpdateManyMutationInput, where?: AuthTableWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    updateManyLinks: <T = BatchPayload>(args: { data: LinkUpdateManyMutationInput, where?: LinkWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyUsers: <T = BatchPayload>(args: { where?: UserWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyAuthTables: <T = BatchPayload>(args: { where?: AuthTableWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
-    deleteManyLinks: <T = BatchPayload>(args: { where?: LinkWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
+    updateManyLinks: <T = BatchPayload>(args: { data: LinkUpdateManyMutationInput, where?: LinkWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyUsers: <T = BatchPayload>(args: { data: UserUpdateManyMutationInput, where?: UserWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    updateManyAuthTables: <T = BatchPayload>(args: { data: AuthTableUpdateManyMutationInput, where?: AuthTableWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyLinks: <T = BatchPayload>(args: { where?: LinkWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyUsers: <T = BatchPayload>(args: { where?: UserWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> ,
+    deleteManyAuthTables: <T = BatchPayload>(args: { where?: AuthTableWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<T> 
   }
 
 export interface Subscription {
-    user: <T = UserSubscriptionPayload>(args: { where?: UserSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    authTable: <T = AuthTableSubscriptionPayload>(args: { where?: AuthTableSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
-    link: <T = LinkSubscriptionPayload>(args: { where?: LinkSubscriptionWhereInput }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> 
+    link: <T = LinkSubscriptionPayload | null>(args: { where?: LinkSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    user: <T = UserSubscriptionPayload | null>(args: { where?: UserSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> ,
+    authTable: <T = AuthTableSubscriptionPayload | null>(args: { where?: AuthTableSubscriptionWhereInput | null }, info?: GraphQLResolveInfo | string, options?: Options) => Promise<AsyncIterator<T | null>> 
   }
 
 export interface Exists {
+  Link: (where?: LinkWhereInput) => Promise<boolean>
   User: (where?: UserWhereInput) => Promise<boolean>
   AuthTable: (where?: AuthTableWhereInput) => Promise<boolean>
-  Link: (where?: LinkWhereInput) => Promise<boolean>
 }
 
 export interface Prisma {
@@ -416,9 +416,9 @@ type BatchPayload {
 }
 
 type Link implements Node {
+  id: ID!
   text: String
   link: String!
-  id: ID!
 }
 
 """A connection to a list of items."""
@@ -446,12 +446,12 @@ type LinkEdge {
 }
 
 enum LinkOrderByInput {
+  id_ASC
+  id_DESC
   text_ASC
   text_DESC
   link_ASC
   link_DESC
-  id_ASC
-  id_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -459,9 +459,9 @@ enum LinkOrderByInput {
 }
 
 type LinkPreviousValues {
+  id: ID!
   text: String
   link: String!
-  id: ID!
 }
 
 type LinkSubscriptionPayload {
@@ -522,6 +522,46 @@ input LinkWhereInput {
 
   """Logical NOT on all given filters combined by AND."""
   NOT: [LinkWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
   text: String
 
   """All values that are not equal to given value."""
@@ -602,46 +642,6 @@ input LinkWhereInput {
 
   """All values not ending with the given string."""
   link_not_ends_with: String
-  id: ID
-
-  """All values that are not equal to given value."""
-  id_not: ID
-
-  """All values that are contained in given list."""
-  id_in: [ID!]
-
-  """All values that are not contained in given list."""
-  id_not_in: [ID!]
-
-  """All values less than the given value."""
-  id_lt: ID
-
-  """All values less than or equal the given value."""
-  id_lte: ID
-
-  """All values greater than the given value."""
-  id_gt: ID
-
-  """All values greater than or equal the given value."""
-  id_gte: ID
-
-  """All values containing the given string."""
-  id_contains: ID
-
-  """All values not containing the given string."""
-  id_not_contains: ID
-
-  """All values starting with the given string."""
-  id_starts_with: ID
-
-  """All values not starting with the given string."""
-  id_not_starts_with: ID
-
-  """All values ending with the given string."""
-  id_ends_with: ID
-
-  """All values not ending with the given string."""
-  id_not_ends_with: ID
 }
 
 input LinkWhereUniqueInput {
@@ -655,24 +655,24 @@ Long can represent values between -(2^63) and 2^63 - 1.
 scalar Long
 
 type Mutation {
+  createLink(data: LinkCreateInput!): Link!
   createUser(data: UserCreateInput!): User!
   createAuthTable(data: AuthTableCreateInput!): AuthTable!
-  createLink(data: LinkCreateInput!): Link!
+  updateLink(data: LinkUpdateInput!, where: LinkWhereUniqueInput!): Link
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   updateAuthTable(data: AuthTableUpdateInput!, where: AuthTableWhereUniqueInput!): AuthTable
-  updateLink(data: LinkUpdateInput!, where: LinkWhereUniqueInput!): Link
+  deleteLink(where: LinkWhereUniqueInput!): Link
   deleteUser(where: UserWhereUniqueInput!): User
   deleteAuthTable(where: AuthTableWhereUniqueInput!): AuthTable
-  deleteLink(where: LinkWhereUniqueInput!): Link
+  upsertLink(where: LinkWhereUniqueInput!, create: LinkCreateInput!, update: LinkUpdateInput!): Link!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
   upsertAuthTable(where: AuthTableWhereUniqueInput!, create: AuthTableCreateInput!, update: AuthTableUpdateInput!): AuthTable!
-  upsertLink(where: LinkWhereUniqueInput!, create: LinkCreateInput!, update: LinkUpdateInput!): Link!
+  updateManyLinks(data: LinkUpdateManyMutationInput!, where: LinkWhereInput): BatchPayload!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
   updateManyAuthTables(data: AuthTableUpdateManyMutationInput!, where: AuthTableWhereInput): BatchPayload!
-  updateManyLinks(data: LinkUpdateManyMutationInput!, where: LinkWhereInput): BatchPayload!
+  deleteManyLinks(where: LinkWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
   deleteManyAuthTables(where: AuthTableWhereInput): BatchPayload!
-  deleteManyLinks(where: LinkWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -703,15 +703,15 @@ type PageInfo {
 }
 
 type Query {
+  links(where: LinkWhereInput, orderBy: LinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Link]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
   authTables(where: AuthTableWhereInput, orderBy: AuthTableOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [AuthTable]!
-  links(where: LinkWhereInput, orderBy: LinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Link]!
+  link(where: LinkWhereUniqueInput!): Link
   user(where: UserWhereUniqueInput!): User
   authTable(where: AuthTableWhereUniqueInput!): AuthTable
-  link(where: LinkWhereUniqueInput!): Link
+  linksConnection(where: LinkWhereInput, orderBy: LinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LinkConnection!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
   authTablesConnection(where: AuthTableWhereInput, orderBy: AuthTableOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): AuthTableConnection!
-  linksConnection(where: LinkWhereInput, orderBy: LinkOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): LinkConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -721,18 +721,17 @@ type Query {
 }
 
 type Subscription {
+  link(where: LinkSubscriptionWhereInput): LinkSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
   authTable(where: AuthTableSubscriptionWhereInput): AuthTableSubscriptionPayload
-  link(where: LinkSubscriptionWhereInput): LinkSubscriptionPayload
 }
 
 type User implements Node {
+  id: ID!
   firstName: String!
-  surname: String
   email: String!
   hash: String
   roles: [String!]!
-  id: ID!
 }
 
 """A connection to a list of items."""
@@ -747,7 +746,6 @@ type UserConnection {
 
 input UserCreateInput {
   firstName: String!
-  surname: String
   email: String!
   hash: String
   roles: UserCreaterolesInput
@@ -767,16 +765,14 @@ type UserEdge {
 }
 
 enum UserOrderByInput {
+  id_ASC
+  id_DESC
   firstName_ASC
   firstName_DESC
-  surname_ASC
-  surname_DESC
   email_ASC
   email_DESC
   hash_ASC
   hash_DESC
-  id_ASC
-  id_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -784,12 +780,11 @@ enum UserOrderByInput {
 }
 
 type UserPreviousValues {
+  id: ID!
   firstName: String!
-  surname: String
   email: String!
   hash: String
   roles: [String!]!
-  id: ID!
 }
 
 type UserSubscriptionPayload {
@@ -833,7 +828,6 @@ input UserSubscriptionWhereInput {
 
 input UserUpdateInput {
   firstName: String
-  surname: String
   email: String
   hash: String
   roles: UserUpdaterolesInput
@@ -841,7 +835,6 @@ input UserUpdateInput {
 
 input UserUpdateManyMutationInput {
   firstName: String
-  surname: String
   email: String
   hash: String
   roles: UserUpdaterolesInput
@@ -860,6 +853,46 @@ input UserWhereInput {
 
   """Logical NOT on all given filters combined by AND."""
   NOT: [UserWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
   firstName: String
 
   """All values that are not equal to given value."""
@@ -900,46 +933,6 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   firstName_not_ends_with: String
-  surname: String
-
-  """All values that are not equal to given value."""
-  surname_not: String
-
-  """All values that are contained in given list."""
-  surname_in: [String!]
-
-  """All values that are not contained in given list."""
-  surname_not_in: [String!]
-
-  """All values less than the given value."""
-  surname_lt: String
-
-  """All values less than or equal the given value."""
-  surname_lte: String
-
-  """All values greater than the given value."""
-  surname_gt: String
-
-  """All values greater than or equal the given value."""
-  surname_gte: String
-
-  """All values containing the given string."""
-  surname_contains: String
-
-  """All values not containing the given string."""
-  surname_not_contains: String
-
-  """All values starting with the given string."""
-  surname_starts_with: String
-
-  """All values not starting with the given string."""
-  surname_not_starts_with: String
-
-  """All values ending with the given string."""
-  surname_ends_with: String
-
-  """All values not ending with the given string."""
-  surname_not_ends_with: String
   email: String
 
   """All values that are not equal to given value."""
@@ -1020,51 +1013,11 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   hash_not_ends_with: String
-  id: ID
-
-  """All values that are not equal to given value."""
-  id_not: ID
-
-  """All values that are contained in given list."""
-  id_in: [ID!]
-
-  """All values that are not contained in given list."""
-  id_not_in: [ID!]
-
-  """All values less than the given value."""
-  id_lt: ID
-
-  """All values less than or equal the given value."""
-  id_lte: ID
-
-  """All values greater than the given value."""
-  id_gt: ID
-
-  """All values greater than or equal the given value."""
-  id_gte: ID
-
-  """All values containing the given string."""
-  id_contains: ID
-
-  """All values not containing the given string."""
-  id_not_contains: ID
-
-  """All values starting with the given string."""
-  id_starts_with: ID
-
-  """All values not starting with the given string."""
-  id_not_starts_with: ID
-
-  """All values ending with the given string."""
-  id_ends_with: ID
-
-  """All values not ending with the given string."""
-  id_not_ends_with: ID
 }
 
 input UserWhereUniqueInput {
-  email: String
   id: ID
+  email: String
 }
 `
 
@@ -1089,12 +1042,12 @@ export type AuthTableOrderByInput =   'role_ASC' |
   'createdAt_ASC' |
   'createdAt_DESC'
 
-export type LinkOrderByInput =   'text_ASC' |
+export type LinkOrderByInput =   'id_ASC' |
+  'id_DESC' |
+  'text_ASC' |
   'text_DESC' |
   'link_ASC' |
   'link_DESC' |
-  'id_ASC' |
-  'id_DESC' |
   'updatedAt_ASC' |
   'updatedAt_DESC' |
   'createdAt_ASC' |
@@ -1104,16 +1057,14 @@ export type MutationType =   'CREATED' |
   'UPDATED' |
   'DELETED'
 
-export type UserOrderByInput =   'firstName_ASC' |
+export type UserOrderByInput =   'id_ASC' |
+  'id_DESC' |
+  'firstName_ASC' |
   'firstName_DESC' |
-  'surname_ASC' |
-  'surname_DESC' |
   'email_ASC' |
   'email_DESC' |
   'hash_ASC' |
   'hash_DESC' |
-  'id_ASC' |
-  'id_DESC' |
   'updatedAt_ASC' |
   'updatedAt_DESC' |
   'createdAt_ASC' |
@@ -1123,314 +1074,297 @@ export interface AuthTableCreateInput {
   role: String
   table: String
   action: String
-  field?: String
+  field?: String | null
 }
 
 export interface AuthTableSubscriptionWhereInput {
-  AND?: AuthTableSubscriptionWhereInput[] | AuthTableSubscriptionWhereInput
-  OR?: AuthTableSubscriptionWhereInput[] | AuthTableSubscriptionWhereInput
-  NOT?: AuthTableSubscriptionWhereInput[] | AuthTableSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: AuthTableWhereInput
+  AND?: AuthTableSubscriptionWhereInput[] | AuthTableSubscriptionWhereInput | null
+  OR?: AuthTableSubscriptionWhereInput[] | AuthTableSubscriptionWhereInput | null
+  NOT?: AuthTableSubscriptionWhereInput[] | AuthTableSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: AuthTableWhereInput | null
 }
 
 export interface AuthTableUpdateInput {
-  role?: String
-  table?: String
-  action?: String
-  field?: String
+  role?: String | null
+  table?: String | null
+  action?: String | null
+  field?: String | null
 }
 
 export interface AuthTableUpdateManyMutationInput {
-  role?: String
-  table?: String
-  action?: String
-  field?: String
+  role?: String | null
+  table?: String | null
+  action?: String | null
+  field?: String | null
 }
 
 export interface AuthTableWhereInput {
-  AND?: AuthTableWhereInput[] | AuthTableWhereInput
-  OR?: AuthTableWhereInput[] | AuthTableWhereInput
-  NOT?: AuthTableWhereInput[] | AuthTableWhereInput
-  role?: String
-  role_not?: String
-  role_in?: String[] | String
-  role_not_in?: String[] | String
-  role_lt?: String
-  role_lte?: String
-  role_gt?: String
-  role_gte?: String
-  role_contains?: String
-  role_not_contains?: String
-  role_starts_with?: String
-  role_not_starts_with?: String
-  role_ends_with?: String
-  role_not_ends_with?: String
-  table?: String
-  table_not?: String
-  table_in?: String[] | String
-  table_not_in?: String[] | String
-  table_lt?: String
-  table_lte?: String
-  table_gt?: String
-  table_gte?: String
-  table_contains?: String
-  table_not_contains?: String
-  table_starts_with?: String
-  table_not_starts_with?: String
-  table_ends_with?: String
-  table_not_ends_with?: String
-  action?: String
-  action_not?: String
-  action_in?: String[] | String
-  action_not_in?: String[] | String
-  action_lt?: String
-  action_lte?: String
-  action_gt?: String
-  action_gte?: String
-  action_contains?: String
-  action_not_contains?: String
-  action_starts_with?: String
-  action_not_starts_with?: String
-  action_ends_with?: String
-  action_not_ends_with?: String
-  field?: String
-  field_not?: String
-  field_in?: String[] | String
-  field_not_in?: String[] | String
-  field_lt?: String
-  field_lte?: String
-  field_gt?: String
-  field_gte?: String
-  field_contains?: String
-  field_not_contains?: String
-  field_starts_with?: String
-  field_not_starts_with?: String
-  field_ends_with?: String
-  field_not_ends_with?: String
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
+  AND?: AuthTableWhereInput[] | AuthTableWhereInput | null
+  OR?: AuthTableWhereInput[] | AuthTableWhereInput | null
+  NOT?: AuthTableWhereInput[] | AuthTableWhereInput | null
+  role?: String | null
+  role_not?: String | null
+  role_in?: String[] | String | null
+  role_not_in?: String[] | String | null
+  role_lt?: String | null
+  role_lte?: String | null
+  role_gt?: String | null
+  role_gte?: String | null
+  role_contains?: String | null
+  role_not_contains?: String | null
+  role_starts_with?: String | null
+  role_not_starts_with?: String | null
+  role_ends_with?: String | null
+  role_not_ends_with?: String | null
+  table?: String | null
+  table_not?: String | null
+  table_in?: String[] | String | null
+  table_not_in?: String[] | String | null
+  table_lt?: String | null
+  table_lte?: String | null
+  table_gt?: String | null
+  table_gte?: String | null
+  table_contains?: String | null
+  table_not_contains?: String | null
+  table_starts_with?: String | null
+  table_not_starts_with?: String | null
+  table_ends_with?: String | null
+  table_not_ends_with?: String | null
+  action?: String | null
+  action_not?: String | null
+  action_in?: String[] | String | null
+  action_not_in?: String[] | String | null
+  action_lt?: String | null
+  action_lte?: String | null
+  action_gt?: String | null
+  action_gte?: String | null
+  action_contains?: String | null
+  action_not_contains?: String | null
+  action_starts_with?: String | null
+  action_not_starts_with?: String | null
+  action_ends_with?: String | null
+  action_not_ends_with?: String | null
+  field?: String | null
+  field_not?: String | null
+  field_in?: String[] | String | null
+  field_not_in?: String[] | String | null
+  field_lt?: String | null
+  field_lte?: String | null
+  field_gt?: String | null
+  field_gte?: String | null
+  field_contains?: String | null
+  field_not_contains?: String | null
+  field_starts_with?: String | null
+  field_not_starts_with?: String | null
+  field_ends_with?: String | null
+  field_not_ends_with?: String | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
 }
 
 export interface AuthTableWhereUniqueInput {
-  id?: ID_Input
+  id?: ID_Input | null
 }
 
 export interface LinkCreateInput {
-  text?: String
+  text?: String | null
   link: String
 }
 
 export interface LinkSubscriptionWhereInput {
-  AND?: LinkSubscriptionWhereInput[] | LinkSubscriptionWhereInput
-  OR?: LinkSubscriptionWhereInput[] | LinkSubscriptionWhereInput
-  NOT?: LinkSubscriptionWhereInput[] | LinkSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: LinkWhereInput
+  AND?: LinkSubscriptionWhereInput[] | LinkSubscriptionWhereInput | null
+  OR?: LinkSubscriptionWhereInput[] | LinkSubscriptionWhereInput | null
+  NOT?: LinkSubscriptionWhereInput[] | LinkSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: LinkWhereInput | null
 }
 
 export interface LinkUpdateInput {
-  text?: String
-  link?: String
+  text?: String | null
+  link?: String | null
 }
 
 export interface LinkUpdateManyMutationInput {
-  text?: String
-  link?: String
+  text?: String | null
+  link?: String | null
 }
 
 export interface LinkWhereInput {
-  AND?: LinkWhereInput[] | LinkWhereInput
-  OR?: LinkWhereInput[] | LinkWhereInput
-  NOT?: LinkWhereInput[] | LinkWhereInput
-  text?: String
-  text_not?: String
-  text_in?: String[] | String
-  text_not_in?: String[] | String
-  text_lt?: String
-  text_lte?: String
-  text_gt?: String
-  text_gte?: String
-  text_contains?: String
-  text_not_contains?: String
-  text_starts_with?: String
-  text_not_starts_with?: String
-  text_ends_with?: String
-  text_not_ends_with?: String
-  link?: String
-  link_not?: String
-  link_in?: String[] | String
-  link_not_in?: String[] | String
-  link_lt?: String
-  link_lte?: String
-  link_gt?: String
-  link_gte?: String
-  link_contains?: String
-  link_not_contains?: String
-  link_starts_with?: String
-  link_not_starts_with?: String
-  link_ends_with?: String
-  link_not_ends_with?: String
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
+  AND?: LinkWhereInput[] | LinkWhereInput | null
+  OR?: LinkWhereInput[] | LinkWhereInput | null
+  NOT?: LinkWhereInput[] | LinkWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  text?: String | null
+  text_not?: String | null
+  text_in?: String[] | String | null
+  text_not_in?: String[] | String | null
+  text_lt?: String | null
+  text_lte?: String | null
+  text_gt?: String | null
+  text_gte?: String | null
+  text_contains?: String | null
+  text_not_contains?: String | null
+  text_starts_with?: String | null
+  text_not_starts_with?: String | null
+  text_ends_with?: String | null
+  text_not_ends_with?: String | null
+  link?: String | null
+  link_not?: String | null
+  link_in?: String[] | String | null
+  link_not_in?: String[] | String | null
+  link_lt?: String | null
+  link_lte?: String | null
+  link_gt?: String | null
+  link_gte?: String | null
+  link_contains?: String | null
+  link_not_contains?: String | null
+  link_starts_with?: String | null
+  link_not_starts_with?: String | null
+  link_ends_with?: String | null
+  link_not_ends_with?: String | null
 }
 
 export interface LinkWhereUniqueInput {
-  id?: ID_Input
+  id?: ID_Input | null
 }
 
 export interface UserCreateInput {
   firstName: String
-  surname?: String
   email: String
-  hash?: String
-  roles?: UserCreaterolesInput
+  hash?: String | null
+  roles?: UserCreaterolesInput | null
 }
 
 export interface UserCreaterolesInput {
-  set?: String[] | String
+  set?: String[] | String | null
 }
 
 export interface UserSubscriptionWhereInput {
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
-  mutation_in?: MutationType[] | MutationType
-  updatedFields_contains?: String
-  updatedFields_contains_every?: String[] | String
-  updatedFields_contains_some?: String[] | String
-  node?: UserWhereInput
+  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput | null
+  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput | null
+  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput | null
+  mutation_in?: MutationType[] | MutationType | null
+  updatedFields_contains?: String | null
+  updatedFields_contains_every?: String[] | String | null
+  updatedFields_contains_some?: String[] | String | null
+  node?: UserWhereInput | null
 }
 
 export interface UserUpdateInput {
-  firstName?: String
-  surname?: String
-  email?: String
-  hash?: String
-  roles?: UserUpdaterolesInput
+  firstName?: String | null
+  email?: String | null
+  hash?: String | null
+  roles?: UserUpdaterolesInput | null
 }
 
 export interface UserUpdateManyMutationInput {
-  firstName?: String
-  surname?: String
-  email?: String
-  hash?: String
-  roles?: UserUpdaterolesInput
+  firstName?: String | null
+  email?: String | null
+  hash?: String | null
+  roles?: UserUpdaterolesInput | null
 }
 
 export interface UserUpdaterolesInput {
-  set?: String[] | String
+  set?: String[] | String | null
 }
 
 export interface UserWhereInput {
-  AND?: UserWhereInput[] | UserWhereInput
-  OR?: UserWhereInput[] | UserWhereInput
-  NOT?: UserWhereInput[] | UserWhereInput
-  firstName?: String
-  firstName_not?: String
-  firstName_in?: String[] | String
-  firstName_not_in?: String[] | String
-  firstName_lt?: String
-  firstName_lte?: String
-  firstName_gt?: String
-  firstName_gte?: String
-  firstName_contains?: String
-  firstName_not_contains?: String
-  firstName_starts_with?: String
-  firstName_not_starts_with?: String
-  firstName_ends_with?: String
-  firstName_not_ends_with?: String
-  surname?: String
-  surname_not?: String
-  surname_in?: String[] | String
-  surname_not_in?: String[] | String
-  surname_lt?: String
-  surname_lte?: String
-  surname_gt?: String
-  surname_gte?: String
-  surname_contains?: String
-  surname_not_contains?: String
-  surname_starts_with?: String
-  surname_not_starts_with?: String
-  surname_ends_with?: String
-  surname_not_ends_with?: String
-  email?: String
-  email_not?: String
-  email_in?: String[] | String
-  email_not_in?: String[] | String
-  email_lt?: String
-  email_lte?: String
-  email_gt?: String
-  email_gte?: String
-  email_contains?: String
-  email_not_contains?: String
-  email_starts_with?: String
-  email_not_starts_with?: String
-  email_ends_with?: String
-  email_not_ends_with?: String
-  hash?: String
-  hash_not?: String
-  hash_in?: String[] | String
-  hash_not_in?: String[] | String
-  hash_lt?: String
-  hash_lte?: String
-  hash_gt?: String
-  hash_gte?: String
-  hash_contains?: String
-  hash_not_contains?: String
-  hash_starts_with?: String
-  hash_not_starts_with?: String
-  hash_ends_with?: String
-  hash_not_ends_with?: String
-  id?: ID_Input
-  id_not?: ID_Input
-  id_in?: ID_Input[] | ID_Input
-  id_not_in?: ID_Input[] | ID_Input
-  id_lt?: ID_Input
-  id_lte?: ID_Input
-  id_gt?: ID_Input
-  id_gte?: ID_Input
-  id_contains?: ID_Input
-  id_not_contains?: ID_Input
-  id_starts_with?: ID_Input
-  id_not_starts_with?: ID_Input
-  id_ends_with?: ID_Input
-  id_not_ends_with?: ID_Input
+  AND?: UserWhereInput[] | UserWhereInput | null
+  OR?: UserWhereInput[] | UserWhereInput | null
+  NOT?: UserWhereInput[] | UserWhereInput | null
+  id?: ID_Input | null
+  id_not?: ID_Input | null
+  id_in?: ID_Output[] | ID_Output | null
+  id_not_in?: ID_Output[] | ID_Output | null
+  id_lt?: ID_Input | null
+  id_lte?: ID_Input | null
+  id_gt?: ID_Input | null
+  id_gte?: ID_Input | null
+  id_contains?: ID_Input | null
+  id_not_contains?: ID_Input | null
+  id_starts_with?: ID_Input | null
+  id_not_starts_with?: ID_Input | null
+  id_ends_with?: ID_Input | null
+  id_not_ends_with?: ID_Input | null
+  firstName?: String | null
+  firstName_not?: String | null
+  firstName_in?: String[] | String | null
+  firstName_not_in?: String[] | String | null
+  firstName_lt?: String | null
+  firstName_lte?: String | null
+  firstName_gt?: String | null
+  firstName_gte?: String | null
+  firstName_contains?: String | null
+  firstName_not_contains?: String | null
+  firstName_starts_with?: String | null
+  firstName_not_starts_with?: String | null
+  firstName_ends_with?: String | null
+  firstName_not_ends_with?: String | null
+  email?: String | null
+  email_not?: String | null
+  email_in?: String[] | String | null
+  email_not_in?: String[] | String | null
+  email_lt?: String | null
+  email_lte?: String | null
+  email_gt?: String | null
+  email_gte?: String | null
+  email_contains?: String | null
+  email_not_contains?: String | null
+  email_starts_with?: String | null
+  email_not_starts_with?: String | null
+  email_ends_with?: String | null
+  email_not_ends_with?: String | null
+  hash?: String | null
+  hash_not?: String | null
+  hash_in?: String[] | String | null
+  hash_not_in?: String[] | String | null
+  hash_lt?: String | null
+  hash_lte?: String | null
+  hash_gt?: String | null
+  hash_gte?: String | null
+  hash_contains?: String | null
+  hash_not_contains?: String | null
+  hash_starts_with?: String | null
+  hash_not_starts_with?: String | null
+  hash_ends_with?: String | null
+  hash_not_ends_with?: String | null
 }
 
 export interface UserWhereUniqueInput {
-  email?: String
-  id?: ID_Input
+  id?: ID_Input | null
+  email?: String | null
 }
 
 /*
@@ -1457,7 +1391,7 @@ export interface AuthTable extends Node {
   role: String
   table: String
   action: String
-  field?: String
+  field?: String | null
   id: ID_Output
 }
 
@@ -1467,7 +1401,7 @@ export interface AuthTable extends Node {
  */
 export interface AuthTableConnection {
   pageInfo: PageInfo
-  edges: AuthTableEdge[]
+  edges: Array<AuthTableEdge | null>
   aggregate: AggregateAuthTable
 }
 
@@ -1484,15 +1418,15 @@ export interface AuthTablePreviousValues {
   role: String
   table: String
   action: String
-  field?: String
+  field?: String | null
   id: ID_Output
 }
 
 export interface AuthTableSubscriptionPayload {
   mutation: MutationType
-  node?: AuthTable
-  updatedFields?: String[]
-  previousValues?: AuthTablePreviousValues
+  node?: AuthTable | null
+  updatedFields?: Array<String> | null
+  previousValues?: AuthTablePreviousValues | null
 }
 
 export interface BatchPayload {
@@ -1500,9 +1434,9 @@ export interface BatchPayload {
 }
 
 export interface Link extends Node {
-  text?: String
-  link: String
   id: ID_Output
+  text?: String | null
+  link: String
 }
 
 /*
@@ -1511,7 +1445,7 @@ export interface Link extends Node {
  */
 export interface LinkConnection {
   pageInfo: PageInfo
-  edges: LinkEdge[]
+  edges: Array<LinkEdge | null>
   aggregate: AggregateLink
 }
 
@@ -1525,16 +1459,16 @@ export interface LinkEdge {
 }
 
 export interface LinkPreviousValues {
-  text?: String
-  link: String
   id: ID_Output
+  text?: String | null
+  link: String
 }
 
 export interface LinkSubscriptionPayload {
   mutation: MutationType
-  node?: Link
-  updatedFields?: String[]
-  previousValues?: LinkPreviousValues
+  node?: Link | null
+  updatedFields?: Array<String> | null
+  previousValues?: LinkPreviousValues | null
 }
 
 /*
@@ -1544,17 +1478,16 @@ export interface LinkSubscriptionPayload {
 export interface PageInfo {
   hasNextPage: Boolean
   hasPreviousPage: Boolean
-  startCursor?: String
-  endCursor?: String
+  startCursor?: String | null
+  endCursor?: String | null
 }
 
 export interface User extends Node {
-  firstName: String
-  surname?: String
-  email: String
-  hash?: String
-  roles: String[]
   id: ID_Output
+  firstName: String
+  email: String
+  hash?: String | null
+  roles: Array<String>
 }
 
 /*
@@ -1563,7 +1496,7 @@ export interface User extends Node {
  */
 export interface UserConnection {
   pageInfo: PageInfo
-  edges: UserEdge[]
+  edges: Array<UserEdge | null>
   aggregate: AggregateUser
 }
 
@@ -1577,19 +1510,18 @@ export interface UserEdge {
 }
 
 export interface UserPreviousValues {
-  firstName: String
-  surname?: String
-  email: String
-  hash?: String
-  roles: String[]
   id: ID_Output
+  firstName: String
+  email: String
+  hash?: String | null
+  roles: Array<String>
 }
 
 export interface UserSubscriptionPayload {
   mutation: MutationType
-  node?: User
-  updatedFields?: String[]
-  previousValues?: UserPreviousValues
+  node?: User | null
+  updatedFields?: Array<String> | null
+  previousValues?: UserPreviousValues | null
 }
 
 /*
