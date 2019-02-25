@@ -7,11 +7,18 @@
     "tables": [
       "app/server/tables"
     ],
+    "actions": [
+      "app/server/actions"
+    ],
     "generated": "app/server/generated",
     "prisma": "prisma"
   },
   "options": {
     "auth": true
   },
-  "secret": "7Phk8i3M29wTutl7TFRrlPM7NrGFJaxEPEOMLFoDEIlWZwUGZBYafA5QSzlrzGTd9xPK03buzmhoGZUvqGut7n9NNi2cPLfM6UmWLlg8wlm2a5mpBEIwRG9uO1xrAA3w"
+  "prisma": {
+    "host": "http://localhost",
+    "port": "5577"
+  },
+  "secret": "my-super-secret-string"
 }

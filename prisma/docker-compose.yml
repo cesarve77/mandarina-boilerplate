@@ -4,9 +4,11 @@ services:
     image: prismagraphql/prisma:1.21
     restart: always
     ports:
+#Do not change this directly. change it in /mandarina.json
     - "5577:5577"
     environment:
       PRISMA_CONFIG: |
+#Do not change this directly. change it in /mandarina.json
         port: 5577
         databases:
           mandarina:

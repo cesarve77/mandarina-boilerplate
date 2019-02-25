@@ -1,11 +1,11 @@
-endpoint: 'http://192.168.99.100:4466'
+endpoint: 'http://192.168.99.100:5577'
 datamodel:
+  - datamodel/signin.model.graphql
+  - datamodel/signup.model.graphql
   - datamodel/link.model.graphql
   - datamodel/user.model.graphql
-  - datamodel/mandarina.auth.model.graphql
 hooks:
   post-deploy:
     - graphql get-schema -p prisma
     - graphql codegen
-secret: >-
-  7Phk8i3M29wTutl7TFRrlPM7NrGFJaxEPEOMLFoDEIlWZwUGZBYafA5QSzlrzGTd9xPK03buzmhoGZUvqGut7n9NNi2cPLfM6UmWLlg8wlm2a5mpBEIwRG9uO1xrAA3w
+secret: my-super-secret-string

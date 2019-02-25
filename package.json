@@ -110,13 +110,10 @@
     ]
   },
   "scripts": {
-    "init-docker": "cd prisma && eval \"$(docker-machine env default)\" && docker-machine start default",
-    "stop-docker": "docker-machine stop default",
+    "prisma-up": "cd prisma && docker-compose up -d",
     "deploy-prisma": "cd prisma && prisma deploy --force flag",
     "playground": "prisma playground --port 8000",
     "server": "ts-node -O '{\"module\": \"commonjs\"}' app/server/server.ts",
-    "docker-ip": "docker-machine ip default",
-    "docker-mysql-ip": "docker inspect mandarina_mysql_1 | grep \"IPAddress\"",
     "webpack": "webpack-dev-server --hot",
     "codegen": "cd prisma && graphql codegen",
     "mandarina": "manda-cli"
