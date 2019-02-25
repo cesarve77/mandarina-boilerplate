@@ -12,8 +12,6 @@ prisma.exists.Link({})
     .then((exists) => {
         if (!exists) {
             datas.forEach((data)=> prisma.mutation.createLink({data}).catch(console.log))
-
-
         }
     })
 
